@@ -1,0 +1,209 @@
+/* Define default variable values (light mode defaults) */
+:root {
+  --sidebar-bg: #ffffff;
+  --sidebar-border: #ddd;
+  --sidebar-text: #333;
+  --chat-header-bg: #1976d2cd;
+  --chat-header-text: #fff;
+  --chat-window-bg: #ffffff;     /* Chat window background in light mode */
+  --chat-messages-bg: #f9f9f9;     /* Chat messages background in light mode */
+  --message-user-bg: #bbdefb;
+  --message-user-text: #0d47a1;
+  --message-bot-bg: #e0e0e0;
+  --message-bot-text: #333;
+  --input-bg: #fff;
+  --input-border: #ccc;
+  --send-button-bg: #1976d2;
+  --send-button-hover: #115293;
+}
+
+/* Global */
+html, body, #root {
+  height: 100%;
+  margin: 0;
+  font-family: 'Roboto', sans-serif;
+  background: #f4f4f4;
+}
+
+/* Main Chat Container */
+.chat-container {
+  display: flex;
+  height: 100vh;
+  position: relative;
+}
+
+/* Sidebar */
+.sidebar {
+  background: var(--sidebar-bg);
+  border-right: 1px solid var(--sidebar-border);
+  transition: width 0.3s ease;
+  overflow: hidden;
+}
+
+.sidebar-content {
+  opacity: 1;
+  transition: opacity 0.3s ease;
+}
+
+.sidebar-header {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  border-bottom: 1px solid var(--sidebar-border);
+}
+
+.sidebar-toggle {
+  margin-right: 10px;
+  color: var(--chat-header-bg);
+}
+
+.sidebar-title {
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--sidebar-text);
+}
+
+/* Contact List Items */
+.contact-item {
+  padding: 10px;
+  margin: 8px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.contact-item:hover {
+  background: rgba(0, 0, 0, 0.05);
+}
+
+.contact-item.active {
+  background: rgba(0, 0, 0, 0.1);
+}
+
+/* Floating Toggle Button for Collapsed Sidebar */
+.sidebar-collapsed-toggle {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  z-index: 1000;
+  background: var(--sidebar-bg);
+  border: 1px solid var(--sidebar-border);
+  border-radius: 50%;
+  padding: 6px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
+
+/* Chat Window */
+.chat-window {
+  display: flex;
+  flex-direction: column;
+  background: var(--chat-window-bg);
+  transition: width 0.3s ease;
+}
+
+/* Chat Header */
+.chat-header {
+  background: var(--chat-header-bg);
+  color: var(--chat-header-text);
+  padding: 15px;
+  text-align: center;
+  border-bottom: 1px solid var(--sidebar-border);
+  font-size: 18px;
+  font-weight: 600;
+}
+
+/* Chat Messages */
+.chat-messages {
+  flex-grow: 1;
+  padding: 15px;
+  overflow-y: auto;
+  background: var(--chat-messages-bg);
+  display: flex;
+  flex-direction: column; /* Ensures messages stack vertically */
+  gap: 12px;            /* Adds space between messages */
+}
+
+/* Message Bubbles */
+.message {
+  max-width: 70%;
+  padding: 12px 16px;
+  border-radius: 20px;
+  margin-bottom: 10px;
+  font-size: 14px;
+  line-height: 1.5;
+  opacity: 0;
+  animation: fadeIn 0.3s forwards;
+}
+
+@keyframes fadeIn {
+  to { opacity: 1; }
+}
+
+.user-message {
+  background: var(--message-user-bg);
+  color: var(--message-user-text);
+  align-self: flex-end;  /* Align user messages to right */
+  border-bottom-right-radius: 5px;
+}
+
+.bot-message {
+  background: var(--message-bot-bg);
+  color: var(--message-bot-text);
+  align-self: flex-start; /* Align bot messages to left */
+  border-bottom-left-radius: 5px;
+}
+
+/* Input Container */
+.input-container {
+  display: flex;
+  align-items: center;
+  padding: 10px 15px;
+  border-top: 1px solid var(--sidebar-border);
+  background: var(--input-container-bg);
+}
+
+
+.message-input {
+  flex-grow: 1;
+  background: var(--input-bg);
+  border: 1px solid var(--input-border);
+  border-radius: 25px;
+  padding: 10px 15px;
+  font-size: 14px;
+  transition: background 0.2s;
+}
+
+/* Remove extra border from Material-UI's outlined TextField */
+.message-input .MuiOutlinedInput-notchedOutline {
+  border: none !important;
+}
+
+.message-input:focus {
+  background: #f0f0f0;
+  outline: none;
+}
+
+.send-button {
+  margin-left: 10px;
+  background: var(--send-button-bg);
+  color: #fff;
+  border-radius: 50%;
+  padding: 10px;
+  transition: background 0.3s;
+}
+
+.send-button:hover {
+  background: var(--send-button-hover);
+}
+
+/* Emoji Picker Container */
+.emoji-picker {
+  position: absolute;
+  bottom: 60px; /* Adjust as needed */
+  left: 20px;   /* Adjust as needed */
+  z-index: 1100;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
