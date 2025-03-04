@@ -18,6 +18,7 @@ import EmojiPicker from "emoji-picker-react"; // Make sure you've installed this
 import "./Chat.css";
 import { users } from "../data";
 import axios from "axios";
+import API_BASE_URL from "../config"; // Import backend URL
 
 const ChatApp = () => {
   const [activeChat, setActiveChat] = useState(null);
@@ -50,7 +51,7 @@ const ChatApp = () => {
     const currentMsg = message;
     setMessage("");
     try {
-      const response = await axios.post("http://localhost:5000/api/chat", {
+      const response = await axios.post(`${API_BASE_URL}/api/chat`, {
         sessionId: activeChat.name,
         message: currentMsg,
         contactId: activeChat.id,
